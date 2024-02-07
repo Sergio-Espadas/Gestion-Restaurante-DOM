@@ -1,8 +1,6 @@
-// Suponiendo que tienes métodos de creación de objetos en el archivo restaurante.js
-import { Dish, Category, Allergen, Menu, Restaurant, Coordinate } from './restaurante.js';
 
 // Definir la función para cargar los objetos iniciales
-function cargarObjetosIniciales() {
+function creacionOnjetos() {
     // Crear instancias de las categorías, platos, alérgenos, menús y restaurantes
 
     let restaurantSergio = RestaurantsManager.getInstance();
@@ -120,5 +118,3 @@ function cargarObjetosIniciales() {
 
 }
 
-// Llamar a la función cargarObjetosIniciales cuando la página se haya cargado completamente
-window.onload = cargarObjetosIniciales;
