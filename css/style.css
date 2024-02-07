@@ -130,14 +130,14 @@ a {
 
 /* Categorias de platos en el inicio */
 
-.category {
+/* .category {
   display: grid;
   grid-template-columns: 25% 25% 25% 25%;
   padding-top: 4em;
   padding-bottom: 15em;
   place-items: center center;
   justify-content: center;
-}
+} */
 
 /* Hamburguesas */
 

@@ -2,7 +2,7 @@ import { Category, Allergen, Menu, Coordinate, Dish, Restaurant, } from './resta
 
 const MODEL = Symbol('restaurant');
 const VIEW = Symbol('restaurantView');
-const LOAD_MANAGER_OBJECTS = Symbol('Load Manager Objects');
+const LOAD_RESTAURANT = Symbol('Load Manager Objects');
 
 class RestaurantController {
     constructor(model, view) {
@@ -12,10 +12,13 @@ class RestaurantController {
 
         this.onLoad();
 
+        this.onInit();
+        this[VIEW].bindInit(this.handleInit);
+
 
     }
 
-    [LOAD_MANAGER_OBJECTS]() {
+    [LOAD_RESTAURANT]() {
         // Crear instancias de las categorías, platos, alérgenos, menús y restaurantes
 
         // Creamos los 4 platos de pasta
@@ -114,7 +117,7 @@ class RestaurantController {
         this[MODEL].assignCategoryToDish(carne, wahiu);
 
 
-        // Asignamos los platos a los menus
+        // Asignamos los platos a los menus 
         this[MODEL].assignMenuToDish(menuPasta, calzone);
         this[MODEL].assignMenuToDish(menuPasta, pizza);
         this[MODEL].assignMenuToDish(menuPasta, macarrones);
@@ -129,8 +132,16 @@ class RestaurantController {
     }
 
     onLoad = () => {
-        this[LOAD_MANAGER_OBJECTS]();
+        this[LOAD_RESTAURANT]();
+        this[VIEW].showProductTypes();
     };
+
+    onInit = () => {
+    }
+
+    handleInit = () => {
+        this.onInit();
+    }
 }
 
 

@@ -745,7 +745,6 @@ let RestaurantsManager = (function () {
             // Buscar el plato en el sistema
             let dish = this.#dishes.find((d) => d.name === dishName);
 
-            console.log(category);
 
             // Si el plato no existe, se añade al sistema
             if (!dish) {
@@ -753,7 +752,6 @@ let RestaurantsManager = (function () {
                 this.#dishes.push(dish);
             }
 
-            console.log(dish);
 
             // Asignar el plato a la categoría
             category.dishes.push(dish);
