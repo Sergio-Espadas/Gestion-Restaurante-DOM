@@ -351,6 +351,50 @@ let RestaurantsManager = (function () {
             };
         }
 
+        getCategoryProducts(category, ordered) {
+            if (!(category instanceof Category)) {
+                throw new ObjecManagerException('category', 'Category');
+            }
+
+            let categorias = this.#categories;
+
+            for (const cate of categorias) {
+                if (cate.name.name.includes(category.name)) {
+                    const storedCategory = cate;
+                    const values = (ordered)
+                        ? storedCategory.dishes[0].name(ordered)
+                        : storedCategory.dishes[0].name;
+                    return {
+                        *[Symbol.iterator]() {
+                            for (const product of values) {
+                                yield product;
+                            }
+                        },
+                    };
+
+                }
+            }
+
+        }
+
+        getCategory(title) {
+
+            let categorias = this.#categories;
+
+            for (const cate of categorias) {
+                if (cate.name.name.includes(title)) {
+                    var cat = cate.name;
+                }
+            }
+
+            if (cat) {
+                return cat;
+            } else {
+                throw new Error("No se encontro la categoria " + title);
+            }
+
+        }
+
 
         // Getter para obtener un iterador de menús
         getMenus() {
@@ -378,7 +422,7 @@ let RestaurantsManager = (function () {
         }
 
 
-        // Getter para obtener un iterador de alérgenos
+        // Getter para obtener un iterador de dishes
         getDishes() {
             const dishIterator = this.#dishes;
             return {
@@ -389,6 +433,21 @@ let RestaurantsManager = (function () {
                 },
             };
         }
+
+        getDish(name) {
+
+            let dishes = this.#dishes;
+
+            for (const di of dishes) {
+                console.log(di.name);
+                const dish = di.name.find(obj => obj.name === name);
+                if (dish) {
+                    return dish;
+                }
+            }
+            return null; // Si no se encuentra el objeto, devolvemos null
+        }
+
 
 
         // Getter para obtener un iterador de restaurantes
@@ -722,7 +781,7 @@ let RestaurantsManager = (function () {
 
 
         // Método para asignar un plato a una categoría
-        assignCategoryToDish(categoryName, dishName) {
+        assignCategoryToDish(categoryName, ...dishName) {
             // Verificar si Category es null
             if (categoryName === null) {
                 throw new Error("La categoría es null.");
@@ -764,7 +823,7 @@ let RestaurantsManager = (function () {
 
 
         // Método para asignar un plato a una alegeria
-        assignAllergenToDish(allergenName, dishName) {
+        assignAllergenToDish(allergenName, ...dishName) {
             // Verificar si allergen es null
             if (allergenName === null) {
                 throw new Error("El alergeno es null.");
@@ -804,7 +863,7 @@ let RestaurantsManager = (function () {
 
 
         // Método para asignar un plato a un menu
-        assignMenuToDish(menuName, dishName) {
+        assignMenuToDish(menuName, ...dishName) {
             // Verificar si allergen es null
             if (menuName === null) {
                 throw new Error("El menu es null.");
@@ -844,7 +903,7 @@ let RestaurantsManager = (function () {
 
 
         // Método para desasignar un plato de una categoría
-        deassignCategoryToDish(categoryName, dishName) {
+        deassignCategoryToDish(categoryName, ...dishName) {
             // Verificar si Category es null
             if (categoryName === null) {
                 throw new Error("La categoría es null.");
@@ -883,7 +942,7 @@ let RestaurantsManager = (function () {
 
 
         // Método para desasignar un plato de un alergeno
-        deassignAllergenToDish(allergenName, dishName) {
+        deassignAllergenToDish(allergenName, ...dishName) {
             // Verificar si allergen es null
             if (allergenName === null) {
                 throw new Error("El alergeno es null.");
@@ -920,7 +979,7 @@ let RestaurantsManager = (function () {
 
 
         // Método para desasignar un plato de un menu
-        deassignMenuToDish(menuName, dishName) {
+        deassignMenuToDish(menuName, ...dishName) {
             // Verificar si menu es null
             if (menuName === null) {
                 throw new Error("El menu es null.");

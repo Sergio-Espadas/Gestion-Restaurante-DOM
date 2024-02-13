@@ -21,74 +21,74 @@ class RestaurantController {
     [LOAD_RESTAURANT]() {
         // Crear instancias de las categorías, platos, alérgenos, menús y restaurantes
 
-        // Creamos los 4 platos de pasta
-        let spaghetti = new Dish("Spaghetti", "Spaghetti con tomate",
-            ["Spaghetti", "Tomate"],
-            "URL_Spaghetti_Con_Tomate");
+        // Creamos los 4 platos de Hamburguesas
+        let italiana = new Dish("Italiana", "Hamburguesa italiana",
+            ["italiana", "Tomate"],
+            "URL_italiana_Con_Tomate");
 
-        let macarrones = new Dish("macarrones", "Macarrones con tomate",
-            ["Macarrones", "Tomate"],
-            "URL_Macarrones_Con_Tomate");
+        let smash = new Dish("Smash", "Hamburguesa smash",
+            ["smash", "Tomate"],
+            "URL_smash_Con_Tomate");
 
-        let pizza = new Dish("Pizza", "Pizza con tomate",
-            ["Pizza", "Tomate"],
-            "URL_Pizza_Con_Tomate");
+        let vegetariana = new Dish("Vegetariana", "Hamburguesa vegetal",
+            ["vegetal", "Tomate"],
+            "URL_vegetal_Con_Tomate");
 
-        let calzone = new Dish("Calzone", "Calzone con tomate",
-            ["Calzone", "Tomate"],
-            "URL_Calzone_Con_Tomate");
-
-
-        // Creamos los 4 platos de carne
-        let ternera = new Dish("Ternera", "Ternera en salsa",
-            ["Ternera", "Salsa"],
-            "URL_Ternera_En_Salsa");
-
-        let cordero = new Dish("Cordero", "Cordero en salsa",
-            ["Cordero", "Salsa"],
-            "URL_Cordero_En_Salsa");
-
-        let wahiu = new Dish("Wahiu", "Wahiu en salsa",
-            ["Wahiu", "Salsa"],
-            "URL_Wahiu_En_Salsa");
-
-        let ciervo = new Dish("Ciervo", "Ciervo en salsa",
-            ["Ciervo", "Salsa"],
-            "URL_Ciervo_En_Salsa");
+        let barbacoa = new Dish("Barbacoa", "Hamburguesa barbacoa",
+            ["barbacoa", "Tomate"],
+            "URL_barbacoa_Con_Tomate");
 
 
-        // Creamos los 4 platos de carne
-        let merluza = new Dish("Merluza", "Merluza en salsa",
-            ["Merluza", "Salsa"],
-            "URL_Merluza_En_Salsa");
+        // Creamos los 4 platos de heladoss
+        let chocolate = new Dish("Chocolate", "Helado de chocolate",
+            ["chocolate", "Salsa"],
+            "URL_chocolate_En_Salsa");
 
-        let salmon = new Dish("Salmon", "Salmon en salsa",
-            ["Salmon", "Salsa"],
-            "URL_Salmon_En_Salsa");
+        let vainilla = new Dish("Vainilla", "Helado de vainilla",
+            ["vainilla", "Salsa"],
+            "URL_vainilla_En_Salsa");
 
-        let boqueron = new Dish("Boqueron", "Boqueron en salsa",
-            ["Boqueron", "Salsa"],
-            "URL_Boqueron_En_Salsa");
+        let nata = new Dish("Nata", "Helado de nata",
+            ["nata", "Salsa"],
+            "URL_nata_En_Salsa");
 
-        let panga = new Dish("Panga", "Panga en salsa",
-            ["Panga", "Salsa"],
-            "URL_Panga_En_Salsa");
+        let pistacho = new Dish("Pistacho", "Helado de pistacho",
+            ["pistacho", "Salsa"],
+            "URL_pistacho_En_Salsa");
+
+
+        // Creamos los 4 platos de brochetas
+        let pollo = new Dish("Pollo", "Brocheta de pollo",
+            ["pollo", "Salsa"],
+            "URL_pollo_En_Salsa");
+
+        let ternera = new Dish("Ternera", "Brocheta de ternera",
+            ["ternera", "Salsa"],
+            "URL_ternera_En_Salsa");
+
+        let vegetal = new Dish("Vegetal", "Brocheta vegetal",
+            ["vegetal", "Salsa"],
+            "URL_vegetal_En_Salsa");
+
+        let mixto = new Dish("Mixto", "Brocheta mixta",
+            ["mixto", "Salsa"],
+            "URL_mixto_En_Salsa");
 
         // Crear un objeto de la clase Category
-        let pasta = new Category("Pasta", "Platos Tipicos");
-        let carne = new Category("Pasta", "Platos Tipicos");
-        let pescado = new Category("Pasta", "Platos Tipicos");
+        let brochetas = new Category("Brochetas", "Pimiento, cebolla y carne...");
+        let hamburguesas = new Category("Hamburguesas", "Jugosas y al punto");
+        let helados = new Category("Helados", "Helados Naturales");
 
         // Crear un objeto de la clase Allergen
-        let gluten = new Allergen("Gluten", "La pasta contiene gluten");
+        let gluten = new Allergen("Gluten", "Las hamburguesas contiene gluten");
         let lactosa = new Allergen("Lactosa", "La salsa contiene leche");
-        let frutosSecos = new Allergen("Frutos Secos", "La carne contiene trazas de frutos secos");
+        let frutosSecos = new Allergen("Frutos Secos", "La brochetas contiene trazas de frutos secos");
         let platano = new Allergen("Platanos", "La salsa puede contener trazas de platano");
 
         // Crear un objeto de la clase Menu
-        let menuPasta = new Menu("Menu del Día", "Menu diario del restaurante");
-        let menuCarnes = new Menu("Menu del Día", "Menu diario del restaurante");
-        let menuPescado = new Menu("Menu del Día", "Menu diario del restaurante");
+        let menuHamburguesas = new Menu("Menu Hamburguesas", "Menu diario del restaurante");
+        let menuBrochetas = new Menu("Menu Brochetas", "Menu diario del restaurante");
+        let menuHelados = new Menu("Menu Helados", "Menu diario del restaurante");
 
         // Crear un objeto de la clase Coordinate
         let coordenadasSergio = new Coordinate(40.7128, -74.0060);
@@ -101,47 +101,58 @@ class RestaurantController {
         let cocinaTenedor = new Restaurant("La cocina del Tenedor", "Restaurante tradicional", coordenadasTenedor);
 
         // Asignamos los platos a las categorías
-        this[MODEL].assignCategoryToDish(pasta, spaghetti);
-        this[MODEL].assignCategoryToDish(pasta, macarrones);
-        this[MODEL].assignCategoryToDish(pasta, pizza);
-        this[MODEL].assignCategoryToDish(pasta, calzone);
+        this[MODEL].assignCategoryToDish(hamburguesas, italiana, smash, vegetariana, barbacoa);
 
-        this[MODEL].assignCategoryToDish(pescado, merluza);
-        this[MODEL].assignCategoryToDish(pescado, panga);
-        this[MODEL].assignCategoryToDish(pescado, boqueron);
-        this[MODEL].assignCategoryToDish(pescado, salmon);
+        this[MODEL].assignCategoryToDish(brochetas, pollo, mixto, vegetal, ternera);
 
-        this[MODEL].assignCategoryToDish(carne, ternera);
-        this[MODEL].assignCategoryToDish(carne, cordero);
-        this[MODEL].assignCategoryToDish(carne, ciervo);
-        this[MODEL].assignCategoryToDish(carne, wahiu);
+        this[MODEL].assignCategoryToDish(helados, chocolate, vainilla, pistacho, nata);
 
 
         // Asignamos los platos a los menus 
-        this[MODEL].assignMenuToDish(menuPasta, calzone);
-        this[MODEL].assignMenuToDish(menuPasta, pizza);
-        this[MODEL].assignMenuToDish(menuPasta, macarrones);
+        this[MODEL].assignMenuToDish(menuHamburguesas, barbacoa, vegetariana, smash);
 
-        this[MODEL].assignMenuToDish(menuCarnes, wahiu);
-        this[MODEL].assignMenuToDish(menuCarnes, cordero);
-        this[MODEL].assignMenuToDish(menuCarnes, ternera);
+        this[MODEL].assignMenuToDish(menuHelados, nata, vainilla, chocolate);
 
-        this[MODEL].assignMenuToDish(menuPescado, salmon);
-        this[MODEL].assignMenuToDish(menuPescado, boqueron);
-        this[MODEL].assignMenuToDish(menuPescado, merluza);
+        this[MODEL].assignMenuToDish(menuBrochetas, ternera, vegetal, pollo);
     }
 
     onLoad = () => {
         this[LOAD_RESTAURANT]();
-        this[VIEW].showProductTypes();
+        this[VIEW].showCategories(this[MODEL].getCategories());
+        this[VIEW].showDishes(this[MODEL].getCategories());
+        this.onAddCategory();
     };
 
     onInit = () => {
+        this[VIEW].bindDishesCategoryList(this.handleDishesCategoryList,);
+        this[VIEW].bindDishesCategoryListInMenu(this.handleDishesCategoryList,);
     }
 
     handleInit = () => {
         this.onInit();
     }
+
+    onAddCategory = () => {
+        this[VIEW].showCategoriesInMenu(this[MODEL].getCategories());
+    };
+
+    handleDishesCategoryList = (title) => {
+        const category = (this[MODEL].getCategory(title));
+        this[VIEW].listCategories(this[MODEL].getCategoryProducts(category),
+            category.name);
+        this[VIEW].bindShowDetailsDishes(this.handleShowDetailsDishes);
+    };
+
+    handleShowDetailsDishes = (name) => {
+        try {
+            let dish = this[MODEL].getDish(name);
+            console.log(dish);
+            this[VIEW].showDetailsDishes(dish);
+        } catch (error) {
+            this[VIEW].showDetailsDishes(null, 'No existe este producto en la página.');
+        }
+    };
+
 }
 
 

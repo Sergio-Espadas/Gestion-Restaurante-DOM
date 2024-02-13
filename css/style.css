@@ -5,13 +5,6 @@ body {
   margin: 0 auto;
 }
 
-a {
-  text-decoration: none; /* Quita el subrayado */
-  color: inherit; /* Usa el color heredado del elemento padre */
-  font-weight: inherit; /* Usa el grosor de la fuente heredado del elemento padre */
-  /* Otras propiedades para anular otros estilos, si es necesario */
-}
-
 /* Menu */
 
 .var {
@@ -26,10 +19,11 @@ a {
   cursor: pointer;
 }
 
-.navbar {
+.barra__navegacion {
   display: grid;
-  grid-template-columns: repeat(6, 8%) 45% 5%;
+  grid-template-columns: repeat(7, 1fr);
   place-items: center center;
+  justify-content: center;
   padding-top: 1em;
   padding-left: 1em;
 }
@@ -130,133 +124,56 @@ a {
 
 /* Categorias de platos en el inicio */
 
-/* .category {
+.category {
   display: grid;
-  grid-template-columns: 25% 25% 25% 25%;
-  padding-top: 4em;
-  padding-bottom: 15em;
+  grid-template-columns: repeat(3, 30%);
   place-items: center center;
   justify-content: center;
-} */
+  padding-top: 5em;
+  padding-bottom: 5em;
+}
+
+.dishes {
+  display: grid;
+  grid-template-columns: repeat(4, 25%);
+  place-items: center center;
+  justify-content: center;
+  padding-top: 5em;
+  padding-bottom: 5em;
+}
 
 /* Hamburguesas */
 
-.category__burguer {
+.category__container {
   display: flex;
   flex-direction: column;
   align-items: center;
   border: 1px solid #1c1c1c;
+  cursor: pointer;
 }
 
-.burguer__photo {
+.category__photo {
   border: 1px solid #1c1c1c;
 }
 
-.burguer__information {
+.category_info {
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
-.burguer__information h1 {
+.category_info h3 {
   color: #c93737;
   font-weight: bold;
   font-size: 2em;
+  text-decoration: none;
 }
 
-.burguer__information p {
+.category_info p {
   font-weight: bold;
+  color: #1c1c1c;
   font-size: 0.8em;
-}
-
-/* Patatas fritas */
-
-.category__fries {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  border: 1px solid #1c1c1c;
-}
-
-.fries__photo {
-  border: 1px solid #1c1c1c;
-}
-
-.fries__information {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-.fries__information h1 {
-  color: #c93737;
-  font-weight: bold;
-  font-size: 2em;
-}
-
-.fries__information p {
-  font-weight: bold;
-  font-size: 0.8em;
-}
-
-/* Helados */
-
-.category__iceCream {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  border: 1px solid #1c1c1c;
-}
-
-.iceCream__photo {
-  border: 1px solid #1c1c1c;
-}
-
-.iceCream__information {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-.iceCream__information h1 {
-  color: #c93737;
-  font-weight: bold;
-  font-size: 2em;
-}
-
-.iceCream__information p {
-  font-weight: bold;
-  font-size: 0.8em;
-}
-
-/* Brochetas */
-
-.category__skewers {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  border: 1px solid #1c1c1c;
-}
-
-.skewers__photo {
-  border: 1px solid #1c1c1c;
-}
-
-.skewers__information {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-.skewers__information h1 {
-  color: #c93737;
-  font-weight: bold;
-  font-size: 2em;
-}
-
-.skewers__information p {
-  font-weight: bold;
-  font-size: 0.8em;
+  text-decoration: none;
 }
 
 /* Este será el footer */
@@ -309,4 +226,58 @@ footer {
 .social__media img {
   width: 50px;
   height: 50px;
+}
+
+/* Producto individual */
+.card {
+  border: none;
+}
+.product {
+  background-color: #eee;
+}
+.brand {
+  font-size: 13px;
+}
+.act-price {
+  color: #faa541;
+  font-weight: 700;
+}
+.dis-price {
+  text-decoration: line-through;
+}
+.about {
+  font-size: 14px;
+}
+.color {
+  margin-bottom: 10px;
+}
+label.radio {
+  cursor: pointer;
+}
+label.radio input {
+  position: absolute;
+  top: 0;
+  left: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+label.radio span {
+  padding: 2px 9px;
+  border: 2px solid #faa541;
+  display: inline-block;
+  color: #faa541;
+  border-radius: 3px;
+  text-transform: uppercase;
+}
+label.radio input:checked + span {
+  border-color: #faa541;
+  background-color: #faa541;
+  color: #fff;
+}
+.cart i {
+  margin-right: 10px;
+}
+#main-image {
+  width: 40vh;
 }
