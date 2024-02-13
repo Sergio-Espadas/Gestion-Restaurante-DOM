@@ -61,6 +61,62 @@ class RestaurantView {
         this.menu.append(div);
     }
 
+    showAllergensInMenu(allergens) {
+        const div = document.createElement('div');
+        div.classList.add('nav-item');
+        div.classList.add('dropdown');
+        div.insertAdjacentHTML('beforeend',
+            `<a class="nav-link dropdown-toggle"
+            href="#" id="navAlls" role="button"
+            data-bs-toggle="dropdown" aria-expanded="false">
+            Alergenos</a>`);
+        const container = document.createElement('ul');
+        container.classList.add('dropdown-menu');
+        for (const allergen of allergens) {
+            container.insertAdjacentHTML('beforeend', `<div><a data-allergen="${allergen.name.name}" 
+            class="dropdown-item" href="#productlist">${allergen.name.name}</a></div>`);
+        }
+        div.append(container);
+        this.menu.append(div);
+    }
+
+    showMenusInMenu(menus) {
+        const div = document.createElement('div');
+        div.classList.add('nav-item');
+        div.classList.add('dropdown');
+        div.insertAdjacentHTML('beforeend',
+            `<a class="nav-link dropdown-toggle"
+            href="#" id="navMen" role="button"
+            data-bs-toggle="dropdown" aria-expanded="false">
+            Menus</a>`);
+        const container = document.createElement('ul');
+        container.classList.add('dropdown-menu');
+        for (const menu of menus) {
+            container.insertAdjacentHTML('beforeend', `<div><a data-menu="${menu.name.name}" 
+            class="dropdown-item" href="#productlist">${menu.name.name}</a></div>`);
+        }
+        div.append(container);
+        this.menu.append(div);
+    }
+
+    showRestaurantsInMenu(restaurants) {
+        const div = document.createElement('div');
+        div.classList.add('nav-item');
+        div.classList.add('dropdown');
+        div.insertAdjacentHTML('beforeend',
+            `<a class="nav-link dropdown-toggle"
+            href="#" id="navRes" role="button"
+            data-bs-toggle="dropdown" aria-expanded="false">
+            Restaurantes</a>`);
+        const container = document.createElement('ul');
+        container.classList.add('dropdown-menu');
+        for (const res of restaurants) {
+            container.insertAdjacentHTML('beforeend', `<div><a data-restaurant="${res.name}" 
+            class="dropdown-item" href="#productlist">${res.name}</a></div>`);
+        }
+        div.append(container);
+        this.menu.append(div);
+    }
 
     showDishes(dishes) {
         if (this.platos.children.length > 1)
@@ -109,6 +165,65 @@ class RestaurantView {
         }
     }
 
+    bindDishesAllergenList(handler) {
+        const categoryList = document.getElementById('category-list');
+        const links = categoryList.querySelectorAll('a');
+        for (const link of links) {
+            link.addEventListener('click', (event) => {
+                handler(event.currentTarget.dataset.allergen);
+            });
+        }
+    }
+
+    bindDishesAllergenListInMenu(handler) {
+        const navAlls = document.getElementById('navAlls');
+        const links = navAlls.nextSibling.querySelectorAll('a');
+        for (const link of links) {
+            link.addEventListener('click', (event) => {
+                handler(event.currentTarget.dataset.allergen);
+            });
+        }
+    }
+
+    bindDishesMenuList(handler) {
+        const categoryList = document.getElementById('category-list');
+        const links = categoryList.querySelectorAll('a');
+        for (const link of links) {
+            link.addEventListener('click', (event) => {
+                handler(event.currentTarget.dataset.allergen);
+            });
+        }
+    }
+
+    bindDishesMenuListInMenu(handler) {
+        const navMen = document.getElementById('navMen');
+        const links = navMen.nextSibling.querySelectorAll('a');
+        for (const link of links) {
+            link.addEventListener('click', (event) => {
+                handler(event.currentTarget.dataset.menu);
+            });
+        }
+    }
+
+    bindRestaurantList(handler) {
+        const categoryList = document.getElementById('category-list');
+        const links = categoryList.querySelectorAll('a');
+        for (const link of links) {
+            link.addEventListener('click', (event) => {
+                handler(event.currentTarget.dataset.restaurant);
+            });
+        }
+    }
+
+    bindRestaurantListInMenu(handler) {
+        const navRes = document.getElementById('navRes');
+        const links = navRes.nextSibling.querySelectorAll('a');
+        for (const link of links) {
+            link.addEventListener('click', (event) => {
+                handler(event.currentTarget.dataset.restaurant);
+            });
+        }
+    }
 
     listCategories(categories, title) {
         this.platos.replaceChildren();
@@ -138,6 +253,90 @@ class RestaurantView {
         this.platos.append(container);
 
     }
+
+
+    listAllergens(allergens, title) {
+        this.platos.replaceChildren();
+        const container = document.createElement('div');
+        container.id = ("product-list");
+        container.classList.add("dishes");
+
+        for (const dish of allergens) {
+            container.insertAdjacentHTML('beforeend',
+                `<div class="category__container">
+                    <a data-category="${dish.name}">
+                        <div class="cat-list-image category__photo"><img alt="${dish.name}"
+                            src="../Imagenes/${dish.name}.jpg" />
+                        </div>
+                        <div class="cat-list-text category_info">
+                            <h3>${dish.name}</h3>
+                            <p>${dish.description}</p>
+                        </div>
+                    </a>
+                </div>`
+            )
+
+        };
+
+        this.platos.append(container);
+
+    }
+
+
+    listMenus(menus, title) {
+        this.platos.replaceChildren();
+        const container = document.createElement('div');
+        container.id = ("product-list");
+        container.classList.add("dishes");
+
+        for (const dish of menus) {
+            container.insertAdjacentHTML('beforeend',
+                `<div class="category__container">
+                    <a data-category="${dish.name}">
+                        <div class="cat-list-image category__photo"><img alt="${dish.name}"
+                            src="../Imagenes/${dish.name}.jpg" />
+                        </div>
+                        <div class="cat-list-text category_info">
+                            <h3>${dish.name}</h3>
+                            <p>${dish.description}</p>
+                        </div>
+                    </a>
+                </div>`
+            )
+
+        };
+
+        this.platos.append(container);
+
+    }
+
+    listRestaurant(restaurants, name) {
+        this.platos.replaceChildren();
+        const container = document.createElement('div');
+        container.classList.add('ficha');
+
+        console.log(restaurants);
+
+        container.insertAdjacentHTML('beforeend',
+            `<div class="ficha__container">
+                <a data-category="${restaurants.name}">
+                    <div class="ficha__imagen">
+                    <img src="../Imagenes/restaurante.jpg" class="img-fluid" alt="${restaurants.name}">
+                    </div>
+                    <div class="ficha__info">
+                        <h3>${restaurants.name}</h3>
+                        <p>${restaurants.description}</p>
+                    </div>
+                </a>
+            </div>`
+        )
+
+
+
+        this.platos.append(container);
+
+    }
+
 
     showDetailsDishes(dish, message) {
         this.platos.replaceChildren();

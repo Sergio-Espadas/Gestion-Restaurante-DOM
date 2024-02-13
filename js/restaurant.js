@@ -377,6 +377,93 @@ let RestaurantsManager = (function () {
 
         }
 
+        getAllergenProducts(allergen, ordered) {
+            if (!(allergen instanceof Allergen)) {
+                throw new ObjecManagerException('allergen', 'allergen');
+            }
+
+            let allergens = this.#allergens;
+
+            for (const aller of allergens) {
+                if (aller.name.name.includes(allergen.name)) {
+                    const storedAllergen = aller;
+                    const values = (ordered)
+                        ? storedAllergen.dishes[0].name(ordered)
+                        : storedAllergen.dishes[0].name;
+                    return {
+                        *[Symbol.iterator]() {
+                            for (const product of values) {
+                                yield product;
+                            }
+                        },
+                    };
+
+                }
+            }
+
+        }
+
+        getMenuProducts(menu, ordered) {
+            if (!(menu instanceof Menu)) {
+                throw new ObjecManagerException('menu', 'Menu');
+            }
+
+            let menus = this.#menus;
+
+            for (const men of menus) {
+                if (men.name.name.includes(menu.name)) {
+                    const storedMenu = men;
+                    const values = (ordered)
+                        ? storedMenu.dishes[0].name(ordered)
+                        : storedMenu.dishes[0].name;
+                    return {
+                        *[Symbol.iterator]() {
+                            for (const product of values) {
+                                yield product;
+                            }
+                        },
+                    };
+
+                }
+            }
+
+        }
+
+        getRestaurantsDetails(restaurant, ordered) {
+            if (!(restaurant instanceof Restaurant)) {
+                throw new ObjecManagerException('menu', 'Menu');
+            }
+
+            let restaurants = this.#restaurants;
+
+            for (const res of restaurants) {
+                if (res.name.includes(restaurant.name)) {
+                    const storedRes = res;
+                    console.log(storedRes);
+                    return storedRes
+                }
+            }
+
+        }
+
+        getRestaurant(title) {
+
+            let restaurants = this.#restaurants;
+
+            for (const res of restaurants) {
+                if (res.name.includes(title)) {
+                    var resDet = res;
+                }
+            }
+
+            if (resDet) {
+                return resDet;
+            } else {
+                throw new Error("No se encontro el restaurante " + title);
+            }
+
+        }
+
         getCategory(title) {
 
             let categorias = this.#categories;
@@ -391,6 +478,41 @@ let RestaurantsManager = (function () {
                 return cat;
             } else {
                 throw new Error("No se encontro la categoria " + title);
+            }
+
+        }
+
+        getAllergen(title) {
+
+            let allergens = this.#allergens;
+
+            for (const alle of allergens) {
+                if (alle.name.name.includes(title)) {
+                    var aller = alle.name;
+                }
+            }
+
+            if (aller) {
+                return aller;
+            } else {
+                throw new Error("No se encontro el Alergeno " + title);
+            }
+
+        }
+
+        getMenu(title) {
+            let menus = this.#menus;
+
+            for (const menu of menus) {
+                if (menu.name.name.includes(title)) {
+                    var men = menu.name;
+                }
+            }
+
+            if (men) {
+                return men;
+            } else {
+                throw new Error("No se encontro el Menu " + title);
             }
 
         }
@@ -437,7 +559,6 @@ let RestaurantsManager = (function () {
         getDish(name) {
 
             let dishes = this.#dishes;
-
             for (const di of dishes) {
                 console.log(di.name);
                 const dish = di.name.find(obj => obj.name === name);

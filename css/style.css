@@ -21,7 +21,7 @@ body {
 
 .barra__navegacion {
   display: grid;
-  grid-template-columns: repeat(7, 1fr);
+  grid-template-columns: repeat(10, 1fr);
   place-items: center center;
   justify-content: center;
   padding-top: 1em;
@@ -71,7 +71,7 @@ body {
 
 .information__var {
   display: grid;
-  grid-template-columns: 8% 2% 8% 2% 8% 10%;
+  grid-template-columns: 10% 2% 10% 2% 10% 15%;
   place-items: center center;
   justify-content: center;
 }
@@ -191,6 +191,10 @@ footer {
   place-items: start center;
   justify-content: center;
   padding-top: 3em;
+  font-size: 15px;
+}
+
+.pie h1 {
   font-size: 20px;
 }
 
@@ -280,4 +284,27 @@ label.radio input:checked + span {
 }
 #main-image {
   width: 40vh;
+}
+
+/* Ficha de restaurante */
+.ficha {
+  display: grid;
+  place-items: center center;
+  justify-content: center;
+  padding-top: 5em;
+  padding-bottom: 4em;
+}
+
+.ficha__container {
+  border: 2px solid #1c1c1c;
+}
+
+.ficha__info {
+  display: grid;
+  place-items: center center;
+  border: 2px solid #1c1c1c;
+}
+
+.ficha__info h3 {
+  font-size: 20px;
 }
